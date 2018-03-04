@@ -75,5 +75,3 @@ variables
        endwhile
        return max_elem
   endfun max_array
-
- 

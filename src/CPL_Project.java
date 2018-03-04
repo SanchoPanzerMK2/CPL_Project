@@ -5,6 +5,8 @@ public class CPL_Project {
     public static void main(String args[]) {
         //Scanner scnr = new Scanner(System.in);
         String str = new String();
+        String[] keywords = {"specifications","symbol","forward","references","function", "pointer", "array","type", "struct","integer", "enum","global","declarations","implementations","main","parameters","constant","begin","endfun","if","then","else","endif","repeat","until","endrepeat","display","set","return"};
+        String[] identifiers={"mvoid","integer","short","real","float","double","tbool","char","tstring","tbyte"};
         //System.out.println("Enter String: ");
         //str = scnr.nextLine();
         try{
@@ -14,135 +16,42 @@ public class CPL_Project {
             // Get the object of DataInputStream
             DataInputStream in = new DataInputStream(fstream);
             BufferedReader br = new BufferedReader(new InputStreamReader(in));
+            int linum=0;
             //Read File Line By Line
             while ((str = br.readLine()) != null)   {
+                linum++;
                 // Print the content on the console
                 System.out.println (str);
                 StringTokenizer token = new StringTokenizer(str);
+                System.out.println("\nLine number "+linum);
                 System.out.println("\nThe  list of tokens is:");
                 String tok = "";
+                String tok1 = "";
                 while (token.hasMoreTokens()) {
+                    tok1=token.toString();
                     tok = token.nextToken();
-                    switch (tok) {
-                        case "specifications":
-                            System.out.println("1");
-                            break;
+                    for (int i=0; i<=keywords.length; i++){
+                        if (tok.equals(keywords[i])) {
+                            System.out.println(i + 1);
+                            for (int j=0; j<=identifiers.length; j++){
+                                if (tok.equals(identifiers[j])) {
+                                    System.out.println(j + 1);
+                                    break;
+                                }
+                                else if(tok1.equals("constant")){
+                                    System.out.println(identifiers.length+j+1);
+                            }
+                        }
 
-                        case "symbol":
-                            System.out.println("2");
                             break;
-
-                        case "forward":
-                            System.out.println("3");
+                        }
+                        else{
+                            System.out.println(tok);
                             break;
-
-                        case "references":
-                            System.out.println("4");
-                            break;
-
-                        case "function":
-                            System.out.println("5");
-                            break;
-
-                        case "pointer":
-                            System.out.println("6");
-                            break;
-
-                        case "array":
-                            System.out.println("7");
-                            break;
-
-                        case "type":
-                            System.out.println("8");
-                            break;
-
-                        case "struct":
-                            System.out.println("9");
-                            break;
-
-                        case "integer":
-                            System.out.println("10");
-                            break;
-
-                        case "enum":
-                            System.out.println("11");
-                            break;
-
-                        case "global":
-                            System.out.println("12");
-                            break;
-
-                        case "declarations":
-                            System.out.println("13");
-                            break;
-
-                        case "implementations":
-                            System.out.println("14");
-                            break;
-
-                        case "main":
-                            System.out.println("15");
-                            break;
-
-                        case "parameters":
-                            System.out.println("16");
-                            break;
-
-                        case "constant":
-                            System.out.println("17");
-                            break;
-
-                        case "begin":
-                            System.out.println("18");
-                            break;
-
-                        case "endfun":
-                            System.out.println("19");
-                            break;
-
-                        case "if":
-                            System.out.println("20");
-                            break;
-
-                        case "then":
-                            System.out.println("21");
-                            break;
-
-                        case "else":
-                            System.out.println("22");
-                            break;
-
-                        case "endif":
-                            System.out.println("23");
-                            break;
-
-                        case "repeat":
-                            System.out.println("24");
-                            break;
-
-                        case "until":
-                            System.out.println("25");
-                            break;
-
-                        case "endrepeat":
-                            System.out.println("26");
-                            break;
-
-                        case "display":
-                            System.out.println("27");
-                            break;
-
-                        case "set":
-                            System.out.println("28");
-                            break;
-
-                        case "return":
-                            System.out.println("29");
-                            break;
-
-                        default: System.out.println(tok);
-                            break;
+                        }
                     }
+
+
                 }
             }
             //Close the input stream
