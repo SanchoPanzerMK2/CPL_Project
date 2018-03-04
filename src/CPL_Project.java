@@ -40,6 +40,7 @@ public class CPL_Project {
                                 }
                                 else if(tok1.equals("constant")){
                                     System.out.println(identifiers.length+j+1);
+                                    break;
                             }
                         }
 
